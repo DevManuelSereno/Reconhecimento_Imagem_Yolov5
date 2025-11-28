@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # ------------------------------------------------------------------
-#  PARTE 1: LÓGICA DE DETECÇÃO (Seu código original)
+#  PARTE 1: LÓGICA DE DETECÇÃO
 # ------------------------------------------------------------------
 
 # Carregar o modelo YOLOv5 pré-treinado
@@ -17,7 +17,7 @@ except Exception as e:
 
 
 # ---------------------------
-#   Função: Caixa Estilizada (Sua função original)
+#   Função: Caixa Estilizada
 # ---------------------------
 def draw_stylized_box(img, x1, y1, x2, y2, label):
 
@@ -29,13 +29,13 @@ def draw_stylized_box(img, x1, y1, x2, y2, label):
         (x1 + 4, y1 + 4),
         (x2 + 4, y2 + 4),
         (0, 0, 0),
-        thickness=10 # Sombra um pouco mais sutil
+        thickness=10
     )
 
     # --------------------
     # Caixa principal
     # --------------------
-    color = (30, 144, 255)  # azul (DodgerBlue)
+    color = (30, 144, 255)
     cv2.rectangle(
         img,
         (x1, y1),
@@ -43,10 +43,6 @@ def draw_stylized_box(img, x1, y1, x2, y2, label):
         color,
         thickness=3
     )
-
-    # --------------------
-    # Fundo translúcido do texto
-    # --------------------
     
     # Define o tamanho do texto para criar o retângulo do fundo
     (text_width, text_height), baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_DUPLEX, 0.6, 2)
@@ -86,12 +82,11 @@ def draw_stylized_box(img, x1, y1, x2, y2, label):
 
 
 # ---------------------------
-#   Processamento da Imagem (Sua função, levemente modificada)
-#   Agora ela recebe o OBJETO da imagem, não o caminho
+#   Processamento da Imagem
 # ---------------------------
 def detect_and_draw_objects(img):
     """
-    Executa a detecção YOLOv5 em uma imagem (array NumPy) e 
+    Executa a detecção YOLOv5 em uma imagem (array NumPy) e
     desenha as caixas estilizadas.
     """
     
